@@ -2,28 +2,23 @@
 .MODEL FLAT, C
 
 
-; Funcions definides en C
+; Functions defined in C
 printChar_C PROTO C, value:SDWORD
 gotoxy_C PROTO C, value:SDWORD, value1: SDWORD
 getch_C PROTO C
 
 
-;Subrutines cridades des de C
+; Subroutines called from C  
 public C showCursor, showPlayer, showBoard, moveCursor, moveCursorContinuous, putPiece, put2Players, Play
                          
-;Variables utilitzades - declarades en C
+; Variables used – declared in C:
 extern C row: DWORD, col: BYTE, rowScreen: DWORD, colScreen: DWORD, rowScreenIni: DWORD, colScreenIni: DWORD 
 extern C carac: BYTE, tecla: BYTE, colCursor: BYTE, player: DWORD, mBoard: BYTE, pos: DWORD
 extern C inaRow: DWORD, row4Complete: DWORD
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; Les subrutines que heu de modificar per la pràctica nivell bàsic son:
-; showCursor, showPlayer, showBoard, moveCursor, moveCursorContinuous, calcIndex, putPiece
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
 .code   
    
-;;Macros que guardan y recuperan de la pila los registros de proposito general de la arquitectura de 32 bits de Intel    
+; Macros that save and restore the general-purpose registers of the Intel 32-bit architecture using the stack
 Push_all macro
 	
 	push eax
@@ -49,16 +44,17 @@ endm
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; NO LA PODEU MODIFICAR AQUESTA RUTINA.
+; DO NOT MODIFY THIS ROUTINE.
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; Situar el cursor en una fila i una columna de la pantalla
-; en funció de la fila i columna indicats per les variables colScreen i rowScreen
-; cridant a la funció gotoxy_C.
+; Position the cursor at a specific row and column on the screen,
+; based on the values in the variables colScreen and rowScreen,
+; by calling the gotoxy_C function.
 ;
-; Variables utilitzades: 
-; Cap
-; 
+; Variables used:
+; None
+;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
 gotoxy proc
    push ebp
    mov  ebp, esp
@@ -96,15 +92,17 @@ gotoxy endp
 printch proc
    push ebp
    mov  ebp, esp
-   ;guardem l'estat dels registres del processador perqué
-   ;les funcions de C no mantenen l'estat dels registres.
+
+; We save the processor register state because  
+; C functions do not preserve the register values.
+
    
    
    Push_all
    
 
-   ; Quan cridem la funció  printch_C(char c) des d'assemblador, 
-   ; el paràmetre (carac) s'ha de passar per la pila.
+; When calling the function printch_C(char c) from Assembly,  
+; the parameter (carac) must be passed through the stack.
  
    xor eax,eax
    mov  al, [carac]
@@ -120,16 +118,16 @@ printch proc
 printch endp
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; NO LA PODEU MODIFICAR AQUESTA RUTINA.   
+; DO NOT MODIFY THIS ROUTINE.   
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; Llegir un caràcter de teclat   
-; cridant a la funció getch_C
-; i deixar-lo a la variable tecla.
+; Read a character from the keyboard  
+; by calling the getch_C function,  
+; and store it in the variable tecla.
 ;
-; Variables utilitzades: 
-; tecla: Variable on s'emmagatzema el caracter llegit
-
+; Variables used:  
+; tecla: variable where the read character is stored
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
 getch proc
    push ebp
    mov  ebp, esp
@@ -149,28 +147,28 @@ getch endp
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; Posicionar el cursor a la columna indicada per la variable colCursor, 
-; dins la fila M que hi ha per sobre del tauler.
-; Per a posicionar el cursor cridar a la subrutina gotoxy que es dona feta.
-; Aquesta subrutina posiciona el cursor a la posició indicada per les
-; variables rowScreen i colScreen.
-; Per calcular la posició del cursor a pantalla (rowScreen) i (colScreen)
-; cal utilitzar aquestes fórmules:
+; Position the cursor at the column indicated by the variable colCursor,  
+; on the row M located above the game board.  
+; To position the cursor, call the provided gotoxy subroutine.  
+; This subroutine moves the cursor to the position indicated by the  
+; variables rowScreen and colScreen.  
+; To calculate the cursor position on screen (rowScreen and colScreen),  
+; use the following formulas:
 ;
-;            rowScreen=rowScreenIni-2
-;            colScreen=colScreenIni+(colCursor*4)
+;            rowScreen = rowScreenIni - 2
+;            colScreen = colScreenIni + (colCursor * 4)
 ;
-; Tenir en compte que colCursor és un caràcter (ascii) que s’ha de
-; convertir a un valor numèric per a realitzar l’operació.
+; Note that colCursor is an ASCII character and must be  
+; converted to a numeric value before performing the operation.
 ;
-; Variables utilitzades:
-; colCursor : columna per a accedir a la matriu
-; rowScreen : fila on volem posicionar el cursor a la pantalla.
-; colScreen : columna on volem posicionar el cursor a la pantalla.
-; rowScreenIni : fila de la primera posició de la matriu a la pantalla.
-; colScreenIni : columna de la primera posició de la matriu a la pantalla.
-
+; Variables used:
+; colCursor   : column used to access the matrix  
+; rowScreen   : row where we want to position the cursor on the screen  
+; colScreen   : column where we want to position the cursor on the screen  
+; rowScreenIni: initial row of the matrix on the screen  
+; colScreenIni: initial column of the matrix on the screen
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
 showCursor proc
 	push ebp
 	mov  ebp, esp
