@@ -8,12 +8,26 @@ Written for the pure low-level challenge: direct matrix indexing, manual cursor 
 ## Features
 
 - **6 × 7 ASCII board** rendered in real time  
-- Keyboard controls: `j` ← left `k` → right `Space` drop piece `q` quit  
-- Vertical, horizontal & diagonal win detection in pure assembly  
-- Two modes  
-  - *Single insert* (`putPiece`)  
-  - *Full match* (`Play`) – automatic turn alternation  
-- Clean separation between C front-end (I/O stub) and ASM core logic
+  A classic Connect Four grid, drawn and updated directly in the console.
+
+- **Keyboard input with responsive controls**  
+  `j` to move left, `k` to move right, `Space` to drop a piece, and `q` to quit.
+
+- **Full win detection in pure assembly**  
+  Checks for 4-in-a-row vertically, horizontally, and diagonally using memory arithmetic and conditional jumps — no `if` statements or loops from C.
+
+- **Two gameplay modes**  
+  - *Single insert* (`putPiece`): drop a single piece manually for testing or demonstration  
+  - *Full match* (`Play`): alternate turns between two players until someone wins or quits
+
+- **Live board rendering with cursor control**  
+  The board updates instantly with each move, and the cursor position is manually handled via screen coordinates.
+
+- **Clear separation of responsibilities**  
+  The C layer handles I/O and system calls, while all game logic and computation live in x86 assembly, making the flow modular and testable.
+
+- **Simple UI via console menu**  
+  An in-game menu (also built from scratch) lets you test individual components or start full matches.
 
 ---
 
