@@ -29,15 +29,20 @@ Written for the pure low-level challenge: direct matrix indexing, manual cursor 
 ---
 
 ## Controls in-game
-una 
-| Key | Action                      |
-|-----|-----------------------------|
-| `j` | Move cursor left            |
-| `k` | Move cursor right           |
-| `Space` | Drop piece in column |
-| `q` | Quit current action / game |
+
+<div align="center">
+
+| Key     | Action                   |
+|---------|--------------------------|
+| `j`     | Move cursor left         |
+| `k`     | Move cursor right        |
+| `Space` | Drop piece in column     |
+| `q`     | Quit current action/game |
+
+</div>
 
 ---
+
 
 ## Why Assembly?
 
