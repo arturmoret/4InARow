@@ -58,27 +58,14 @@ By doing all of this manually, the project becomes a hands-on exercise in how pr
 
 ## Screenshots
 
-A few examples of the game running in the console:
-
-### Main menu
-The program starts with a menu where you can select different game features or modes.
-
 <p align="center">
-  <img width="470" alt="Main Menu" src="https://github.com/user-attachments/assets/d0ae0ee4-69a7-491a-98d4-ae6a2fc94184" />
+  <img src="https://github.com/user-attachments/assets/d0ae0ee4-69a7-491a-98d4-ae6a2fc94184" width="200" alt="Main Menu" />
+  <img src="https://github.com/user-attachments/assets/afd918fc-5518-46a9-940c-ba1313bdd969" width="200" alt="Empty Board" />
+  <img src="https://github.com/user-attachments/assets/4ab9b831-0dd0-41fa-981e-5f81f8af4587" width="200" alt="Winning Board" />
 </p>
 
-### Empty board
-When a match begins, the board is clean and ready for the first move.
-
 <p align="center">
-  <img width="470" alt="Empty Board" src="https://github.com/user-attachments/assets/afd918fc-5518-46a9-940c-ba1313bdd969" />
-</p>
-
-### Mid-game with a winner
-Here’s an example of a board with several moves and a winning combination.
-
-<p align="center">
-  <img width="470" alt="Winning Board" src="https://github.com/user-attachments/assets/4ab9b831-0dd0-41fa-981e-5f81f8af4587" />
+  <em>Main menu</em>   <em>Empty board</em>   <em>Winning board</em>
 </p>
 
 
