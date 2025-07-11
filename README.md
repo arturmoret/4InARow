@@ -41,14 +41,18 @@ Written for the pure low-level challenge: direct matrix indexing, manual cursor 
 
 ## Why Assembly?
 
-I wanted to explore:
+This project was an opportunity to go beyond high-level abstractions and work directly with the architecture.  
+Building a game like Connect Four in x86 assembly requires full control over memory, logic, and execution flow, which makes it both challenging and rewarding.
 
-- Manual stack discipline and calling conventions  
-- Direct memory arithmetic for 2-D arrays (`pos = row*7 + col`)  
-- Flag-based branching for game rules  
+The main goals were:
 
-Plus, it’s fun to see a classic game run with zero high-level abstractions.
+- Understand and apply manual stack handling and subroutine calling conventions  
+- Perform explicit memory arithmetic for 2D array indexing 
+- Use processor flags and conditional jumps to control game logic without `if` statements  
+- Handle screen output and cursor movement without any libraries or built-in helpers  
+- Define clear integration between C and Assembly code through consistent global symbols
 
----
+By doing all of this manually, the project becomes a hands-on exercise in how programs actually execute at the lowest level, while still delivering a playable and structured result.
+
 
 
