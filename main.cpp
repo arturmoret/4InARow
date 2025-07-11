@@ -6,7 +6,7 @@
 #include <stdlib.h>
 #include <time.h>
 #include <windows.h>
-#include "globals_Avançat.h"
+#include "globals.h"
 
 extern "C" {
 	// Definition of ASM subroutines
@@ -226,7 +226,7 @@ int main(void) {
 			colCursor = 'D';		// Initial column where we want the cursor to appear ('D')
 			showCursor();			// Place the cursor in the column specified by colCursor
 
-			moveCursor();			// Subroutine that moves the cursor right with ‘k’ and left with ‘j’
+			moveCursor();			// Subroutine that moves the cursor right with â€˜kâ€™ and left with â€˜jâ€™
 
 			gotoxy_C(30, 12);		// Position the cursor below the board
 			printf("Press any key ");
